@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
 
 
 public class AccountCreationPage extends BasePage{
@@ -67,8 +68,8 @@ public class AccountCreationPage extends BasePage{
     @FindBy(css = "[id=\"id_state\"]")//--------ВЫПАДАЮЩИЙ СПИСОК
     private WebElement fieldState;
 
-    @FindBy(css = "[id=\"id_state\"]")//--------ВЫПАДАЮЩИЙ СПИСОК
-    private WebElement[] fieldStateChoos[];
+    @FindBy(css = "[id=\"id_state\"] > option")//+++++++++++ВЫПАДАЮЩИЙ СПИСОК
+    private List<WebElement> fieldStateApt;
 
     //#id_state > option
 
@@ -77,6 +78,11 @@ public class AccountCreationPage extends BasePage{
 
     @FindBy(css = "[id=\"id_country\"]")//--------ВЫПАДАЮЩИЙ СПИСОК
     private WebElement fieldCountry;
+
+    @FindBy(css = "[id=\"id_country\"]> option:nth-child(2)")//++++++++++-ВЫПАДАЮЩИЙ СПИСОК
+    private WebElement countryUSA;
+
+    //#id_country > option:nth-child(2)
 
     @FindBy(css = "[id=\"other\"]")
     private WebElement fieldAdditionalInformation;
@@ -99,12 +105,13 @@ public class AccountCreationPage extends BasePage{
         PageFactory.initElements(driver, this);
     }
 
-  public AccountCreationPage creationAccountNegativeTryRequiredField(
+  public AccountCreationPage creationAccountNegativeTry(
           String firstName,
           String lastName,
           String password,
           String address,
           String city,
+          int indexOfState,
           String postCode,
           String phone){
         radioButtonMr.click();
@@ -113,16 +120,47 @@ public class AccountCreationPage extends BasePage{
         fieldPassword.sendKeys(password);
         fieldAddress1.sendKeys(address);
         fieldCity.sendKeys(city);
+        fieldState.click();
+        fieldStateApt.get(indexOfState).click();
+        fieldCountry.click();
+        countryUSA.click();
+        fieldPostalCode.sendKeys(postCode);
+        fieldHomePhone.sendKeys(phone);
+      buttonRegister.click();
+        return this;
+        }
+
+    public MyAccountPage creationAccountPositive(
+            String firstName,
+            String lastName,
+            String password,
+            String address,
+            String city,
+            int indexOfState,
+            String postCode,
+            String phone){
+        radioButtonMr.click();
+        fieldFirstNameCustomer.sendKeys(firstName);
+        fieldLastNameCustomer.sendKeys(lastName);
+        fieldPassword.sendKeys(password);
+        fieldAddress1.sendKeys(address);
+        fieldCity.sendKeys(city);
+        fieldState.click();
+        fieldStateApt.get(indexOfState).click();
+        fieldCountry.click();
+        countryUSA.click();
+        fieldPostalCode.sendKeys(postCode);
+        fieldHomePhone.sendKeys(phone);
+
+        return new MyAccountPage(driver);}
+
+
+        public AccountCreationPage checkPageAfterNegativeTry(){
 
 
 
         return this;
         }
-
-    public MyAccountPage creationAccountPositive(){
-
-
-        return new MyAccountPage(driver);}
 
 
 

@@ -30,24 +30,40 @@ private WebElement fieldEmailAlreadyRegistered;
         }
 
 
-        public AccountCreationPage CreateAnAccountPositive(String newEmail){
+        public AccountCreationPage createAnAccountPositive(String newEmail){
         fieldEmailCreate.clear();
         fieldEmailCreate.sendKeys(newEmail);
         buttonCreateAccount.click();
         return new AccountCreationPage(driver);
         }
 
-    public AuthenticationPage CreateAnAccountNegative(String text){
+    public AuthenticationPage createAnAccountNegative(String text){
         fieldEmailCreate.clear();
         fieldEmailCreate.sendKeys(text);
         buttonCreateAccount.click();
         return this;
     }
 
+    public MyAccountPage registerAnAccountPositive(String email, String password){
+        fieldEmailAlreadyRegistered.sendKeys(email);
+        fieldEPasswordAlreadyRegistered.sendKeys(password);
+        buttonSignIn.click();
+        return new MyAccountPage(driver);
+
+    }
+
+    public AuthenticationPage registerAnAccountNegative(String email, String password){
+        fieldEmailAlreadyRegistered.sendKeys(email);
+        fieldEPasswordAlreadyRegistered.sendKeys(password);
+        buttonSignIn.click();
+        return this;
+
+    }
+
 
 
     @Override
-    public OpenUrl openUrl() {
+    public AuthenticationPage openUrl() {
         driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
         return this;
     }

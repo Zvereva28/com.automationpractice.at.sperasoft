@@ -1,7 +1,7 @@
 package com.automationpractice.at.sperasoft.pages.base;
 
 import com.automationpractice.at.sperasoft.blocks.HeaderBlock;
-import com.automationpractice.at.sperasoft.pages.LeftNavigation;
+import com.automationpractice.at.sperasoft.blocks.LeftNavigation;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
