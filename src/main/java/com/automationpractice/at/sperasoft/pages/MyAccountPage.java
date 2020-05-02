@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MyAccountPage extends BasePage {
 
@@ -17,21 +17,22 @@ public class MyAccountPage extends BasePage {
     @FindBy(css = "[class=\"icon-ban-circle\"]")
     private WebElement buttonMyCreditSlips;
 
-    @FindBy(css = "class=\"icon-building\"")
+    @FindBy(css = "[class=\"icon-building\"]")
     private WebElement buttonMyAddresses;
 
     @FindBy(css = "[class=\"icon-user\"]")
     private WebElement buttonMyPersonalInformation;
 
-    @FindBy(css = "class=\"icon-heart\"")
+    @FindBy(css = "[class=\"icon-heart\"]")
     private WebElement buttonMyWishLists;
 
 public MyAccountPage checkMyAccountPageIsDisplayed(){
-    assertTrue(buttonHistoryOrder.isDisplayed());
-    assertTrue(buttonMyCreditSlips.isDisplayed());
-    assertTrue(buttonMyAddresses.isDisplayed());
-    assertTrue(buttonMyPersonalInformation.isDisplayed());
-    assertTrue(buttonMyWishLists.isDisplayed());
+    Assert.assertTrue(buttonHistoryOrder.isDisplayed(), "Не отобразилась кнопка HistoryOrder");
+    Assert.assertTrue(buttonMyCreditSlips.isDisplayed(), "Не отобразилась кнопка MyCreditSlips");
+    Assert.assertTrue(buttonMyAddresses.isDisplayed(), "Не отобразилась кнопка MyAddresses");
+    Assert.assertTrue(buttonMyPersonalInformation.isDisplayed(), "Не отобразилась кнопка MyPersonalInformation");
+    Assert.assertTrue(buttonMyWishLists.isDisplayed(), "Не отобразилась кнопка MyWishLists");
+
     return this;
 }
 

@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Suite1">
+    <test name = "test1">
+        <parameter name = "firstName" value="Maria"/>
+        <parameter name = "lastName" value="Koshka"/>
+        <parameter name = "password" value="123456789"/>
+        <parameter name = "address" value="street"/>
+        <parameter name = "city" value="Volgacity"/>
+        <parameter name = "indexOfState" value="12"/>
+        <parameter name = "postCode" value="33332"/>
+        <parameter name = "phone" value="98756225"/>
+        <classes>
+            <class name = "com.automationpractice.at.sperasoft.AuthorizationTest"/>
+        </classes>
+    </test>
+    <test name = "test2">
+
+        <parameter name = "firstName" value="Elena"/>
+        <parameter name = "lastName" value="Ivanova"/>
+        <parameter name = "password" value="987654321"/>
+        <parameter name = "address" value="WallStrit"/>
+        <parameter name = "city" value="Cabana"/>
+        <parameter name = "indexOfState" value="39"/>
+        <parameter name = "postCode" value="32"/>
+        <parameter name = "phone" value="36523658"/>
+        <classes>
+            <class name = "com.automationpractice.at.sperasoft.AuthorizationTest"/>
+        </classes>
+    </test>
+</suite>

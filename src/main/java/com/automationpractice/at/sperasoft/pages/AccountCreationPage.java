@@ -151,6 +151,7 @@ public class AccountCreationPage extends BasePage{
         countryUSA.click();
         fieldPostalCode.sendKeys(postCode);
         fieldHomePhone.sendKeys(phone);
+        buttonRegister.click();
 
         return new MyAccountPage(driver);}
 
