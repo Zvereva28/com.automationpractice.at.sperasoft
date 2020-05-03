@@ -3,14 +3,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
-import com.automationpractice.at.sperasoft.base.BeforeAndAfter;
 import com.automationpractice.at.sperasoft.pages.AuthenticationPage;
 import java.util.concurrent.TimeUnit;
 
 
 import static java.lang.Thread.sleep;
 
-public class AuthorizationTest extends BeforeAndAfter {
+public class RegistrationTest{
 
     protected WebDriver driver;
 
@@ -20,17 +19,17 @@ public class AuthorizationTest extends BeforeAndAfter {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
     }
     @AfterTest
     void terDown(){driver.quit();}
 
 
-        @Test(suiteName = "Регистрация")
+        @Test(testName  = "Регистрация нового пользователя")
         @Parameters({"firstName", "lastName", "password", "address", "city","indexOfState","postCode","phone"})
-        void checkSingInValidLoginParameters(
+        void testCreateAccountValidLoginParameters(
                                    String firstName,
                                    String lastName,
                                    String password,
@@ -45,7 +44,20 @@ public class AuthorizationTest extends BeforeAndAfter {
                     createAnAccountPositive((System.currentTimeMillis())+"zvereva@ele.na").
                     creationAccountPositive(
                             firstName,lastName,password,address,city,indexOfState,postCode,phone).
-                    checkMyAccountPageIsDisplayed();
+                    checkMyAccountPageIsDisplayed().
+                    getHeaderBlock().
+                   checkNamePage("My account");;
+
+
+            sleep(5000);
+        }
+
+        @Test(testName = "Регистрация. «Email address» - не валидное значение")
+    @Parameters({"emailInvalid", "expectedText"})
+    void testCreateAccountInvalidLogin(String emailInvalid, String expectedText) throws InterruptedException {
+            new AuthenticationPage(driver)
+                    .openUrl().createAnAccountNegative(emailInvalid).checkAlertDanger(expectedText);
+
             sleep(5000);
         }
 
