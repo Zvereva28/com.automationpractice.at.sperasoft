@@ -1,12 +1,14 @@
 package com.automationpractice.at.sperasoft.pages;
+
 import com.automationpractice.at.sperasoft.pages.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import java.util.List;
 
-public class AccountCreationPage extends BasePage{
+public class AccountCreationPage extends BasePage {
 
     //++++++++++++++++++++++++++++++++++++++YOUR PERSONAL INFORMATION
 
@@ -101,32 +103,7 @@ public class AccountCreationPage extends BasePage{
         PageFactory.initElements(driver, this);
     }
 
-  public AccountCreationPage creationAccountNegativeTry(
-          String firstName,
-          String lastName,
-          String password,
-          String address,
-          String city,
-          int indexOfState,
-          String postCode,
-          String phone){
-        radioButtonMr.click();
-        fieldFirstNameCustomer.sendKeys(firstName);
-        fieldLastNameCustomer.sendKeys(lastName);
-        fieldPassword.sendKeys(password);
-        fieldAddress1.sendKeys(address);
-        fieldCity.sendKeys(city);
-        fieldState.click();
-        fieldStateApt.get(indexOfState).click();
-        fieldCountry.click();
-        countryUSA.click();
-        fieldPostalCode.sendKeys(postCode);
-        fieldHomePhone.sendKeys(phone);
-      buttonRegister.click();
-        return this;
-        }
-
-    public MyAccountPage creationAccountPositive(
+    public AccountCreationPage creationAccountNegativeTry(
             String firstName,
             String lastName,
             String password,
@@ -134,7 +111,7 @@ public class AccountCreationPage extends BasePage{
             String city,
             int indexOfState,
             String postCode,
-            String phone){
+            String phone) {
         radioButtonMr.click();
         fieldFirstNameCustomer.sendKeys(firstName);
         fieldLastNameCustomer.sendKeys(lastName);
@@ -148,12 +125,36 @@ public class AccountCreationPage extends BasePage{
         fieldPostalCode.sendKeys(postCode);
         fieldHomePhone.sendKeys(phone);
         buttonRegister.click();
+        return this;
+    }
 
-        return new MyAccountPage(driver);}
+    public MyAccountPage creationAccountPositive(
+            String firstName,
+            String lastName,
+            String password,
+            String address,
+            String city,
+            int indexOfState,
+            String postCode,
+            String phone) {
+        radioButtonMr.click();
+        fieldFirstNameCustomer.sendKeys(firstName);
+        fieldLastNameCustomer.sendKeys(lastName);
+        fieldPassword.sendKeys(password);
+        fieldAddress1.sendKeys(address);
+        fieldCity.sendKeys(city);
+        fieldState.click();
+        fieldStateApt.get(indexOfState).click();
+        fieldCountry.click();
+        countryUSA.click();
+        fieldPostalCode.sendKeys(postCode);
+        fieldHomePhone.sendKeys(phone);
+        buttonRegister.click();
+        return new MyAccountPage(driver);
+    }
 
-
-        public AccountCreationPage checkPageAfterNegativeTry(){
+    public AccountCreationPage checkPageAfterNegativeTry() {
 
         return this;
-        }
+    }
 }

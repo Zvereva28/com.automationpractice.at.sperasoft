@@ -1,4 +1,5 @@
 package com.automationpractice.at.sperasoft.blocks;
+
 import com.automationpractice.at.sperasoft.BasePageObject;
 import org.openqa.selenium.WebDriver;
 

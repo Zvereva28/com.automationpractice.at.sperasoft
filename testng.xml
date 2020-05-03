@@ -1,20 +1,37 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "smoke">
-    <test name = "new account registration">
-        <parameter name = "firstName" value="Maria"/>
-        <parameter name = "lastName" value="Koshka"/>
-        <parameter name = "password" value="123456789"/>
-        <parameter name = "address" value="street"/>
-        <parameter name = "city" value="Volgacity"/>
-        <parameter name = "indexOfState" value="12"/>
-        <parameter name = "postCode" value="33332"/>
-        <parameter name = "phone" value="98756225"/>
-        <parameter name = "emailInvalid" value="fgd@hkdguk.t"/>
-        <parameter name = "expectedText" value="an account using this email address has already been registered. please enter a valid password or request a new one."/>
+<suite name="smoke">
+    <test name="Регистрация нового пользователя. Набор данных №1">
+        <parameter name="firstName" value="Maria"/>
+        <parameter name="lastName" value="Koshka"/>
+        <parameter name="password" value="123456789"/>
+        <parameter name="address" value="street"/>
+        <parameter name="city" value="Volgacity"/>
+        <parameter name="indexOfState" value="12"/>
+        <parameter name="postCode" value="33332"/>
+        <parameter name="phone" value="98756225"/>
+        <parameter name="emailInvalid" value="fgd@hkdguk.t"/>
+        <parameter name="expectedText"
+                   value="An account using this email address has already been registered. please enter a valid password or request a new one."/>
         <classes>
-            <class name = "com.automationpractice.at.sperasoft.RegistrationTest"/>
+            <class name="com.automationpractice.at.sperasoft.RegistrationTest"/>
+        </classes>
+    </test>
+    <test name="Регистрация нового пользователя. Набор данных №2">
+        <parameter name="firstName" value="Екатерина"/>
+        <parameter name="lastName" value="Семенова"/>
+        <parameter name="password" value="123456789"/>
+        <parameter name="address" value="Улица"/>
+        <parameter name="city" value="Москва"/>
+        <parameter name="indexOfState" value="45"/>
+        <parameter name="postCode" value="00000"/>
+        <parameter name="phone" value="98756225"/>
+        <parameter name="emailInvalid" value="fgd@hkdguk.tFDES"/>
+        <parameter name="expectedText"
+                   value="An account using this email address has already been registered. please enter a valid password or request a new one."/>
+        <classes>
+            <class name="com.automationpractice.at.sperasoft.RegistrationTest"/>
         </classes>
     </test>
 
